@@ -39,7 +39,7 @@ int largest_fraction(Fraction n1,Fraction n2,Fraction n3)
      }
      if(largest==2)
      {
-       printf("%d/%d is smallest among all",n2.num,n2.den);
+       printf("%d/%d is smallest is among all",n2.num,n2.den);
 
      }
      if(largest==3)
