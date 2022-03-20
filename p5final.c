@@ -1,47 +1,45 @@
 #include <stdio.h>
-int input()
+
+int input_array_size()
 {
   int n;
-  printf("Enter the number\n");
+  printf("Enter size of array\n");
   scanf("%d",&n);
   return n;
 }
 
-void init_array(int n, int a[n])
+void input_array(int n,int a[n])
 {
+  int i;
+  printf("Enter the numbers to compare\n");
   for(int i=0;i<n;i++)
-    a[i] = i;
-  a[1]=0;
-}
-
-void ets(int n, int a[n])
-{
-  int i=0;
-   /* Find next non-zero number */
-  while(i<sqrt(n)){
-   for(;a[i]==0 ;i++);
-   for(int k=i+i;k<n;k += i)
-     a[i] = 0;
-   i++;
+  {
+    scanf("%d",&a[i]);
   }
+  
 }
 
-
-void display(int n, int a[n])
+int find_largest(int n,int arr[n])
 {
-  for(int i=0;i<n;i++)
-    if(a[i]!=0)
-      printf("%d ",a[i]);
-  printf("\n");
+    int i;
+   int large;
+   for (i = 0; i < n; i++)
+        if (arr[i] > large)
+            large = arr[i];
+ 
+    return large;
 }
 
+void output_n(int n, int a[n], int largest)
+{
+  printf("%d is largest\n",largest);
+}
 int main()
 {
-  int n;
-  n=input();
-  int a[n];
-  init_array(n,a);
-  ets(n,a);
-  display(n,a);
+  int x=input_array_size();
+  int a[x];
+  input_array(x,a);
+  int large=find_largest(x,a);
+  output_n(x,a,large); 
   return 0;
 }

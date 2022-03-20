@@ -1,20 +1,50 @@
-
-
-/*Create invite link and paste link in the form and submit form. ( You can edit response later). https://docs.google.com/forms/d/e/1FAIpQLSdTOayhPycdDURXRHTDZ8CDeLmTS9s-sTkkM_VTf_sCzD33uA/viewform?usp=sf_link*/
-
 #include <stdio.h>
-int find_gcd(int a,int b)
+struct _fraction
+{
+int num,den;
+};
+typedef struct _fraction Fraction;
+
+  int maharshi(int a,int b)
 {
   int t;
-  while (b !=0)
+  while (b!=0)
     {
-      t=b;
-      b=a%b;
-      a=t;
+      t = b;
+      b = a%b;
+      a = t;
     }
   return a;
+  
+}
+Fraction input_fraction()
+{
+  Fraction f;
+  printf("input a fraction\n");
+  scanf("%d%d",&f.num,&f.den);
+  return f;
+}
+
+Fraction add_fraction(Fraction f1,Fraction f2)
+{
+  Fraction sum;
+  sum.num = f1.num*f2.den+f2.num*f1.den;
+  sum.den = f1.den*f2.den;
+  int g = maharshi(sum.num,sum.den);//function call
+  sum.num=sum.num/g;
+  sum.den=sum.den/g;
+  return sum;
+}
+void output(Fraction f1,Fraction f2,Fraction sum)
+{
+  printf("%d/%d + %d/%d = %d/%d",f1.num,f1.den,f2.num,f2.den,sum.num,sum.den);
 }
 int main()
 {
-  printf("%d\n",find_gcd(16,24));
-}
+  Fraction f1,f2,sum;
+  f1 = input_fraction();
+  f2 = input_fraction();
+  sum = add_fraction(f1,f2);
+  output(f1,f2,sum)
+  return 0;
+  }
